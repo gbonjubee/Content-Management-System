@@ -1,19 +1,5 @@
 # Write-up Template
 
-### Application Requirement
-
-
-
-
-- Since users could be more or less per time, we should be able to scale up 
-  or down.
-
-### What we don't care about
-- The Operating System - App is not complex, so we don't need to change 
-  anything on this layer
-- Multiple languages - The project is built with a single language python 
-  hence, we don't need multiple language feature
-
 ### Analyze, choose, and justify the appropriate resource option for deploying the app.
 
 *For **both** a VM or App Service solution for the CMS app:*
