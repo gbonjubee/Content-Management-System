@@ -69,7 +69,7 @@ def login():
             flash('Invalid username or password')
             app.logger.error(' GB Invalid login attempt')
             return redirect(url_for('login'))
-        app.logger.info('GB admin Logged in successfully')
+        app.logger.info('admin Logged in successfully')
         login_user(user, remember=form.remember_me.data)
         next_page = request.args.get('next')
         if not next_page or url_parse(next_page).netloc != '':
@@ -79,8 +79,12 @@ def login():
     auth_url = _build_auth_url(scopes=Config.SCOPE, state=session["state"])
     return render_template('login.html', title='Sign In', form=form, auth_url=auth_url)
 
-@app.route(Config.REDIRECT_PATH, methods=['GET', 'POST'])  # Its absolute URL must
-# match your app's redirect_uri set in AAD
+@app.route('/test', methods=['GET', 'POST'])
+def test():
+    return redirect(url_for("home"))
+
+
+@app.route('/getAToken', methods=['GET', 'POST'])
 def authorized():
     if request.args.get('state') != session.get("state"):
         return redirect(url_for("home"))  # No-OP. Goes back to Index page
